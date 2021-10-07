@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+    </head>
+    <body>
+        <div style="text-align: center">
+            <h1>TO-DO LIST</h1>
+            <form action="" method="post">
+                {% csrf_token %} Title:
+                <input
+                    type="text"
+                    name="title"
+                    :
+                    -
+                </input>
+                <br>
+                <br>
+                Task:
+                <input
+                    type="text"
+                    name="desc"
+                    id="desc"
+                />
+                <br>
+                <br>
+                <button type="submit">Add</button>
+                <br><br><br><br>
+
+            </form>
+        </div>
+        <div >
+                <table >
+                <thead>
+                    <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Dscription</th>
+                    </tr>
+                </thead>
+                {% for i in tasklist %}
+                
+                <tbody>
+                    <td>{{i.id}}</td>                    
+                    <td>{{i.title}}</td>                    
+                    <td>{{i.description}}</td>      
+                    
+                    <td><a href="{% url 'update' i.id %}">Update</a></td>
+                    <td><a href="{% url 'delete' i.id %}">Delete</a></td>                 
+                </tbody>       
+                {% endfor %}
+                </table>
+        </div>
+    </body>
+</html>
